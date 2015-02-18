@@ -37,12 +37,10 @@ void ModbusTCP::begin(uint8_t mac[6]){
 #endif
 #ifdef MB_CC3000
 void ModbusTCP::begin(const char *ssid, const char *key, uint8_t secmode){
-  uint32_t index;
-  uint8_t sec;
-  
+
   mb_client.begin();
   Serial.print(F("Connecting to ")); Serial.print(ssid); Serial.println(F(" ..."));
-  mb_client.connectToAP(ssid, key, sec); 
+  mb_client.connectToAP(ssid, key, secmode); 
   while (!mb_client.checkDHCP())
       delay(100);
   uint32_t ipAddress, netmask, gateway, dhcpserv, dnsserv;
